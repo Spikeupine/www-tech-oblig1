@@ -1,0 +1,93 @@
+@font-face {
+    font-family: Roboto;
+    font-style: normal;
+    src: url(Fonts/Roboto/Roboto-Thin.ttf);
+}
+
+@font-face {
+    font-family: Roboto;
+    font-weight: bold;
+    src: url(Fonts/Roboto/Roboto-Bold.ttf);
+}
+
+@font-face {
+    font-family: Roboto;
+    font-style: italic;
+    src: url(Fonts/Roboto/Roboto-Italic.ttf);
+}
+
+html * {
+    font-family: Roboto;
+}
+
+footer {
+    display: block;
+    position: fixed;
+    align-content: center;
+    background-color: orange;
+    width: 100%;
+    bottom: 0px;
+    
+}
+
+.contrast {
+    background-color: #252525;
+    color: white;
+}
+
+
+
+.btn{
+    background-color: rgba(219, 25, 219, 0.675);
+    color: #ffffff;
+    text-decoration: none;
+    border: none;
+    border-radius: 2%;
+    padding: 10% 5%;
+    margin: auto;
+    text-align: center;
+    font-weight: bold;
+    display: inline-block;
+}
+
+.center {
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.grid-container {
+    display: grid;
+}
+
+
+.grid-item
+
+.top-nav {
+    grid-template: 1 / 1;
+    place-items: center;
+    overflow: hidden;
+}
+
+.top-nav ul{
+    list-style-type: none;
+}
+
+.top-nav li {
+    display: inline-block                                                   ;
+}
+
+
+.debug {
+    background-color: cyan;
+}
+
+.row {
+    display: flex;
+    margin: auto 10%;
+}
+
+.column {
+    flex: 50%;
+    padding: 10px;
+}

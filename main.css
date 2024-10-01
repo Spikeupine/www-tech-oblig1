@@ -20,11 +20,14 @@ html * {
     font-family: Roboto;
 }
 
+body {
+    margin: 0;
+}
+
 footer {
     display: block;
     position: fixed;
     align-content: center;
-    background-color: orange;
     width: 100%;
     bottom: 0px;
     
@@ -35,7 +38,11 @@ footer {
     color: white;
 }
 
-
+.contrast a:link, .contrast a:visited{
+    color: #25ffff;
+    font-weight: bold;
+    text-decoration: double;
+}
 
 .btn{
     background-color: rgba(219, 25, 219, 0.675);
@@ -43,7 +50,7 @@ footer {
     text-decoration: none;
     border: none;
     border-radius: 2%;
-    padding: 10% 5%;
+    padding: 1%;
     margin: auto;
     text-align: center;
     font-weight: bold;

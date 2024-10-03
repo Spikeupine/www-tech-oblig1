@@ -34,8 +34,7 @@ footer {
     position:relative;
     align-content: center;
     width: 100%;
-    bottom: 0px;
-    
+    bottom: 0px;   
 }
 
 .contrast {
@@ -85,7 +84,7 @@ footer {
 
 .top-nav li {
     display: inline-block                                                   ;
-}
+}   
 
 
 .debug {
@@ -94,7 +93,7 @@ footer {
 
 .borderd {
     border-color: var(--accent-color);
-    border-width: 0.5   em;
+    border-width: 0.5;
     border-radius: 1em;
     border-style: solid;
 }

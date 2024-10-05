@@ -95,6 +95,7 @@ function displayFrontPage() {
 
 function initPosts() {
     page = 1
+    fetchPosts()
 }
 
 function scrollCallback() {
@@ -163,7 +164,5 @@ function weatherPage() {
     weatherData()
 }
 
-
-
-
+// ::TODO:: Replace this Intersection Observer API
 window.addEventListener("scroll", scrollCallback)

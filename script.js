@@ -1,6 +1,30 @@
 const pageLimit = 15;
 let page = 1
 let maxPageReached = false;
+let continuesPoling = true
+let cities = {
+    "Oslo": {
+        latitude: "59.91273",
+        longitude:"10.74609",
+    },
+    "Stockholm": {
+        latitude: "59.32938", 
+        longitude:"18.06871",
+    },
+    "Helsinki": {
+        latitude: "60.16952",
+        longitude:"24.93545",}
+    ,
+    "Copenhagen": {
+        latitude: "55.67594",
+        longitude:"12.56553",
+    },
+    "Reykjavik": {
+        latitude: "64.13548",
+        longitude:"-21.89541",
+    }
+}
+
 
 function hideOtherSections(sectionID) {
     var sections = document.getElementsByTagName('section');
@@ -42,7 +66,7 @@ function insertPosts(posts, page) {
         card.id = post.id
         card.innerHTML = `<h3>${post.title}</h3><p>${post.body}</p><p>By with ID: ${post.userId}</p>`
         currentRow.appendChild(card)
-        i++
+        i++        
     }
 }
 
@@ -71,15 +95,75 @@ function displayFrontPage() {
 
 function initPosts() {
     page = 1
-    fetchPosts()
 }
 
-function callback() {
+function scrollCallback() {
     if (document.getElementById("posts").hidden === false) {
         fetchPosts()
     }
 }
 
+function displayWeatherData(city, weatherData) {
+    const parentNode = document.getElementById("weatherData");
+    let weatherCard = parentNode.querySelector(`#${city}`);
+    if (weatherCard === null) {
+        let parentRow = document.createElement("div")
+        parentRow.classList.add("row")
+        parentRow.classList.add("center")
+        parentNode.appendChild(parentRow)
+
+        weatherCard = document.createElement("div")
+        weatherCard.id = city
+        weatherCard.classList.add("thick-column")
+        parentRow.appendChild(weatherCard)
+    } else {
+        weatherCard.innerHTML ="";
+    }
+
+    const title = document.createElement("h4")
+    title.innerText = city
+    weatherCard.appendChild(title)
+    
+
+    const temperature = document.createElement("p")
+    temperature.innerText = `Temp: ${weatherData.current_weather.temperature}${weatherData.current_weather_units.temperature}`
+    weatherCard.appendChild(temperature)
+
+    const windSpeed = document.createElement("p")
+    windSpeed.innerText = `Windspeed: ${weatherData.current_weather.windspeed}${weatherData.current_weather_units.windspeed}`
+    weatherCard.appendChild(windSpeed)
 
 
-window.addEventListener("scroll", callback)
+    const timeStamp = document.createElement("p")
+    timeStamp.innerText = weatherData.current_weather.time
+    weatherCard.appendChild(timeStamp)
+}
+
+
+function weatherData() {
+    if (document.getElementById("weather").hidden) {
+        return
+    }
+    for (const [city, coordinates] of Object.entries(cities)) {
+    fetch(`https://api.open-meteo.com/v1/forecast?latitude=${coordinates.latitude}&longitude=${coordinates.longitude}&current_weather=true`)
+    .then((response) => {
+        if (!response.ok) {
+            throw new Error("Errr fetching external resource: " + response.status);
+        }
+        return response.json();
+    })
+    .then(weatherData => displayWeatherData(city, weatherData))
+    }
+    setTimeout(weatherData, 5000)
+}
+
+
+function weatherPage() {
+    hideOtherSections("weather")
+    weatherData()
+}
+
+
+
+
+window.addEventListener("scroll", scrollCallback)

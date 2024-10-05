@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <head>
 <link rel="stylesheet" href="style.css">
-<script src="script.js"/>
+<script src="script.js"></script>
+
 </head>
 
 <body class="center">
@@ -13,16 +14,18 @@
     <div class="inner"></div>
     <nav class="top-nav">
         <ul class="top-nav">
-            <li class="grid-item"><a href="#">Home</a></li>
-            <li class="grid-item"><a href="#">Posts</a></li>
+            <li class="grid-item"><a href="#" onclick="displayFrontPage()">Home</a></li>
+            <li class="grid-item"><a href="#" onclick="initPosts()">Posts</a></li>
             <li class="grid-item"><a href="#">About</a></li>
         </ul>
     </nav>
 </header>
+</div>
 <hr>
 
-<!--Front page content-->
 <section id="landing-page">
+<!--Front page content-->
+<div class="contrast">
 <div class="row center">
     <div class="column left-right">
         <h1>This website is awesome</h1>
@@ -35,8 +38,6 @@
     </a>
     </div>
 </div>
-</div>
-
 </div>
 <h1>Some random information.</h1>
 <div class="row center">
@@ -80,14 +81,17 @@ Agreed, the rivers in justified text layouts drive me nuts. Legibility out the w
         </form>
     </div>
 </div>
+
 </div>
 </section>
 
 
-<section id="user-posts" hidden>
-Something
+<section id="posts" class="center" hidden>
+    <h1>Posts</h1>
 </section>
-<footer class="contrast">
+
+
+<footer id="footer" class="contrast">
     <p>Author: Spikeupine</p>
     <a href="https://github.com/Spikeupine/" target="_blank">Github</a>
 </footer>

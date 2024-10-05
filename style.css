@@ -41,10 +41,14 @@ footer {
     width: 100%;
     bottom: 0px;   
 }
+hr {
+    margin: 0;
+}
 
 .contrast {
     background-color: var(--contrast-color);
     color: var(--contrast-text-color);
+    margin: 0;
 }
 
 .contrast a:link, .contrast a:visited{
@@ -147,10 +151,12 @@ footer {
 
 .thick-column {
     flex: 66%;
+    min-width: 66%;
 }
 
 .thin-column {
     flex: 33%;
+    min-width: 33%;
 }
 
 .padded {
